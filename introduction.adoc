@@ -4,8 +4,6 @@ XTP是一个开源测试平台，当前包含以下几个部分：
 
 *   xtp-terminal ： 实现终端访问的vscode插件，支持建立和保存SSH、Telnet、Serial连接信息；可以为每个终端连接指定各自的名称；
 
-*   xtp-agent： 提供脚本访问终端的代理，当打开多个vscode实例时，每个实例中运行的脚本基于本实例的工作目录访问不同的终端，不会相互影响；
-
 *   xtp-python： 通过脚本访问终端的Python库，提供打开/关闭终端窗口，向终端窗口发送命令并获取命令回显信息，获取指定行数的终端显示信息等功能；
   
 以下几个部分处于规划当中：
@@ -28,27 +26,27 @@ image::images/run_in_vscode.png[]
 
 image::images/run_in_trae.png[]
   
-加载后可以点击“+”图标添加新的终端连接：
-
-image::images/add_terminal.png[]
+用户新建并打开一个*.tbdx文件，然后可以在组网编辑器中添加设备和连接，添加完成后双击设备图标或在列表中点击启动按钮可以打开终端窗口:
   
-添加完成后，点击“连接”按钮即可连接到指定的终端：
-  
-image::images/connect_terminal.png[]
+image::images\run_in_vscode_open_ssh.PNG[]
 
-xtp-terminal还支持以下特性：
+用户新建并运行一个*.xtps文件时，可以下发命令到最前端的终端窗口：
 
-*  保存终端显示信息到日志文件
-*  创建简单的终端命令下发脚本
+image::images\run_xtps_script.png[]
+
+下面是xtp-terminal的完整特性列表：
+
+*  通过组网图编辑器编辑设备终端信息和连接拓扑；
+*  支持TELNET/SSH/SERIAL方式连接到设备；
+*  SSH连接支持同步SFTP连接并提供远端目录显示和文件上传、下载功能；
+*  保存终端显示信息到日志文件；
+*  创建并运行简单的终端命令下发脚本（*.xtps）；
   
 xtp-terminal在开发中借鉴了link:https://github.com/littrick/vscode-serial-terminal[vscode-serial-terminal]的部分实现，如果您需要一个只有Serial连接的更简单的工具，可以下载这个工程作为参考。
 
-== 3. xtp-agent
 
-xtp-agent是一个Golang项目，采用ZMQ通信的Router模式实现多个客户端访问多个终端窗口的消息分发和结果返回。xtp-terminal启动后以当前工作目录作为标识注册到xtp-agent。xtp-python中访问xtp-terminal的终端窗口时，会查找一个一个和当前脚本路径匹配最长的工作路径，将消息发给对应的xtp-terminal进行处理。如果无法找到匹配的xtp-terminal，则选取第一个作为目标对象：
+== 3. xtp-python
 
-image::images/structure.png[]
+xtp-python实现了终端窗口操作的Python语言接口，可以直接在脚本中调用，也是后续xtp-robot开发的设备命令行基础接口：
 
-== 4. xtp-python
-
-xtp-python实现了终端窗口操作的Python语言接口，可以直接在脚本中调用，也是后续xtp-robot开发的设备命令行基础接口。
+image::images\send_command_in_python.png[]
