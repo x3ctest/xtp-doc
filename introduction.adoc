@@ -14,13 +14,13 @@ XTP是一个开源测试平台，当前包含以下几个部分：
 
 下面是完整的系统架构图
   
-image::images\xtp-framework.png[]
+image::images\xtp-framework.PNG[]
 
 == 2. xtp-terminal
 
 xtp-terminal以vscode插件方式提供，可以方便的集成到任意的vscode开发环境：
   
-image::images\run_in_vscode.png[]
+image::images\run_in_vscode.PNG[]
 
 也适用于TRAE开发环境：
 
