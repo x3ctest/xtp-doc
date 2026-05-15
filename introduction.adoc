@@ -13,7 +13,7 @@ XTP是一个开源测试平台，当前包含以下几个部分：
 *   xtp-center：自动化测试运行管理系统，集中管理自动化测试环境和测试脚本，支持并发调度大规模自动化测试任务运行；
 
 下面是完整的系统架构图
-  
+
 image::images\xtp-framework.PNG[]
 
 == 2. xtp-terminal
