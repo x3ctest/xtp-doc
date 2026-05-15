@@ -14,17 +14,17 @@ XTP是一个开源测试平台，当前包含以下几个部分：
 
 下面是完整的系统架构图
   
-image::images/xtp-framework.png[]
+image::images\xtp-framework.png[]
 
 == 2. xtp-terminal
 
 xtp-terminal以vscode插件方式提供，可以方便的集成到任意的vscode开发环境：
   
-image::images/run_in_vscode.png[]
+image::images\run_in_vscode.png[]
 
 也适用于TRAE开发环境：
 
-image::images/run_in_trae.png[]
+image::images\run_in_trae.png[]
   
 用户新建并打开一个*.tbdx文件，然后可以在组网编辑器中添加设备和连接，添加完成后双击设备图标或在列表中点击启动按钮可以打开终端窗口:
   
